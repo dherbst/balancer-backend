@@ -20,3 +20,13 @@ services:
       - 8000:8000
     depends_on:
       - db
+  frontend:
+    build:
+      context: ../bal-fe
+      dockerfile: fe-dockerfile
+    image: balancer-fe:dev
+    command: ["npm", "start"]
+    volumes:
+      - ../bal-fe:/balancer-frontend
+    ports:
+      - 3000:3000
